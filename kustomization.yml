@@ -1,0 +1,15 @@
+resources:
+  - namespace.yml
+  - secret.yml
+  - postgres_pv_pvc.yml
+  - pgadmin_pvc.yml
+  - pgadmin_configmap.yml
+  - postgres_service.yml
+  - pgadmin_service.yml
+  - odoo_service.yml
+  - icwebapp_service.yml
+  - postgres_pod.yml
+  - pgadmin_deploy.yml
+  - odoo_deploy.yml
+  - icwebapp_deploy.yml
+  - icwebapp_ingress.yml

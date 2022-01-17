@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: odoo-deploy
+  namespace: icgroup
+  labels:
+    app: db_odoo
+    env: prod
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: odoo
+  template:
+    metadata:
+      labels:
+        app: odoo
+    spec:
+      containers:
+        - name: odoo
+          image: odoo:13
+          ports:
+            - containerPort: 8069
+          env:
+            - name: HOST
+              value: db-service
+            - name: USER
+              value: odoo
+            - name: PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres
+                  key: postgres-password
+      volumes:
+        - name: db-volume
+          persistentVolumeClaim:
+            claimName: db-pvc
