@@ -16,10 +16,7 @@ spec:
         - name: POSTGRES_USER
           value: odoo
         - name: POSTGRES_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: postgres
-              key: postgres-password
+          value: odoo
       volumeMounts:
         - mountPath: /var/lib/postgresql/data
           name: db-volume
